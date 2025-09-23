@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+ app:
+  build: . 
+  container_name: minha-api
+  ports:
+   - "3000:3000"
+  environment:
+   - NODE_ENV=development
+   - PORT=3000
+  command: npm run start -- --legacy-watch
+  volumes:
+   - .:/app:cached
+   - /app/node_modules
+  restart: unless-stopped
