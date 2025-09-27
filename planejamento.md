@@ -22,6 +22,12 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
     - nodemon.json
     - .env
 
+### Pós config inicial
+
+Dependencias:
+
+- bcrypt
+
 # Configuração sequelize
 
 1. Iniciar sequelize `npx sequelize-cli init` cria pastas:
@@ -49,5 +55,8 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
 
 ## CONTINUAR
 
-- Verificar teste da aplicação com docker
-- Continuar videoaula da udemy
+- Estou enviando dados via JSON e recebendo o User.create(req.body). Meu model de Users possui as chaves
+name, email e password. Quais tipos de dados eu posso enviar no User.create para efetuar a criaçào? pode ser
+qualquer tipo de dados (como objeto, json, array etc) contando que tenha o mesmo nome das chaves do model?
+
+Arquivo alunos nome, sobremome, email, idade, peso, altura
