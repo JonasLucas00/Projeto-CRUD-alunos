@@ -1,6 +1,6 @@
 # to do
 
-## Inicio servidor express + nodemon (rodando em container docker com hotReload nodemon)
+## 1. Inicio servidor express + nodemon (rodando em container docker com hotReload nodemon)
 
 instalação de dependencias, criação e configuração basica dos arquivos abaixo.
 Mostrando mensagem 'success' ao iniciar o servidor express.
@@ -22,6 +22,15 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
     - nodemon.json
     - .env
 
+## feats
+
+1. [x] Criação do CRUD completo index, show, update e delete (teste com insomnia)
+
+    - [x] index (com rota e controller)
+    - [x] show (com rota e controller)
+    - [x] update (com rota e controller)
+    - [x] delete (com rota e controller)
+    
 ### Pós config inicial
 
 Dependencias:
