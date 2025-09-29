@@ -1,0 +1,55 @@
+const { User } = require('../models');
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
+class JwtController {
+    constructor() {
+
+    }
+
+    //Buscar e validar email e senha, Criar token JWT
+    async store(req, res) {
+
+        try {
+            const user = await User.findOne({ where: { email: req.body.email } });
+
+            if (!user) {
+                return res.json(`Usuario não localizado`);
+            }
+            console.log('User localizado');
+            const match = await user.passValidate(req.body.password);
+
+            if (!match) {
+                return res.json(`Senha invalida`);
+            }
+
+            const token = jwt.sign(
+                { id: user.id, email: user.email },
+                process.env.TOKEN_SECRET,
+                { expiresIn: process.env.TOKEN_EXPIRATION }
+            )
+            return res.json({
+                user: { id: user.id, email: user.email },
+                token
+            });
+
+        } catch (error) {
+            console.log('erro');
+            return res.json(`storeError: ${error}`);
+        }
+    }
+}
+
+module.exports = new JwtController()
+
+
+/*
+TENTAR USAR ATÉ esses 5 metodos em um unico controller. Se passar provavelmente o controller esta fazendo mais do que devia
+
+NOMES PADRÃO DE CONTROLLERS 
+index -> lista todos os usuarios -> GET
+store/create -> cria um novo usuario -> POST
+delete -> apaga um usuario -> DELETE
+show -> mostra um usuario -> GET
+updtate -> atualiza um usuario -> PATCH/PUT
+
+*/

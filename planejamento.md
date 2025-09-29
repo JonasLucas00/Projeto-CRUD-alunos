@@ -30,6 +30,18 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
     - [x] show (com rota e controller)
     - [x] update (com rota e controller)
     - [x] delete (com rota e controller)
+
+2. [] Autenticação do usuario (JWT), validar login do user e gerar Token
+
+- Instalar tokens via npm OK
+- Definir value do token e tempo de expiração (dotenv) OK
+- Criar controller para gerenciar token
+- Criar arquivo da rota e criar a rota da validação `token`
+- user acessar rota do token (login), validamos email e senha
+- Se for valido, gerar token e enviar para o user
+
+
+- No JWT não é usado sessão, é gerado um chave onde uma fica com o cliente e outra com o servidor? e a chave do cliente é armazenada no navegador?
     
 ### Pós config inicial
 

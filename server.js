@@ -4,13 +4,15 @@ require('dotenv').config()
 // const { sequelize, User } = require('./src/models');
 const userRouter = require('./src/routes/userRoute.js')
 const homeRouter = require('./src/routes/homeRouter.js')
+const jwtRouter = require('./src/routes/jwtRouter.js');
 const sqliteConnect = require('./src/config/sqliteConnect.js')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/', homeRouter)
-app.use('/user', userRouter)
+app.use('/', homeRouter);
+app.use('/user', userRouter);
+app.use('/token', jwtRouter);
 sqliteConnect.testeDB()
 
 app.listen(process.env.APP_PORT, () => {

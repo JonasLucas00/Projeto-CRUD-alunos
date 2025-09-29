@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+    async passValidate(password) {
+      return await bcrypt.compare(password, this.password_hash);
+    }
   }
   User.init({
     name: {
