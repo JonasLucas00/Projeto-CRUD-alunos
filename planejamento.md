@@ -31,7 +31,8 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
     - [x] update (com rota e controller)
     - [x] delete (com rota e controller)
 
-2. [] Autenticação do usuario (JWT), validar login do user e gerar Token
+2. [x] Autenticação do usuario (JWT), validar login do user e gerar Token
+3. [] Middleware de verificação do JWT
 
 - Instalar tokens via npm OK
 - Definir value do token e tempo de expiração (dotenv) OK

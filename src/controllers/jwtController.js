@@ -6,8 +6,8 @@ class JwtController {
 
     }
 
-    //Buscar e validar email e senha, Criar token JWT
-    async store(req, res) {
+    //Login de usuario
+    async login(req, res) {
 
         try {
             const user = await User.findOne({ where: { email: req.body.email } });
@@ -27,6 +27,7 @@ class JwtController {
                 process.env.TOKEN_SECRET,
                 { expiresIn: process.env.TOKEN_EXPIRATION }
             )
+
             return res.json({
                 user: { id: user.id, email: user.email },
                 token

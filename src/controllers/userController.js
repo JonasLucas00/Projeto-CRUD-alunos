@@ -45,8 +45,8 @@ class UserController {
     //busca um usuario especifico
     async show(req, res) {
         try {
-            if (req.params.id) {
-                const user = await User.findByPk(req.params.id);
+            if (req.userId) {
+                const user = await User.findByPk(req.userId);
                 console.log('show realizado');
                 return res.json(user);
             }
@@ -60,10 +60,10 @@ class UserController {
     //atualiza um usuario especifico
     async update(req, res) {
         try {
-            if (!req.params.id) {
+            if (!req.userId) {
                 return res.json('sem parametro')
             }
-            const user = await User.findByPk(req.params.id)
+            const user = await User.findByPk(req.userId)
 
             if (!user) {
                 return res.json('user não localizado');
@@ -80,10 +80,10 @@ class UserController {
 
     async delete(req, res) {
         try {
-            if (!req.params.id) {
+            if (!req.userId) {
                 return res.json('sem parametro')
             }
-            const user = await User.findByPk(req.params.id)
+            const user = await User.findByPk(req.userId)
 
             if (!user) {
                 return res.json('user não localizado');
