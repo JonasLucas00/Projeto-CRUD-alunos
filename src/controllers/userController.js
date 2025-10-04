@@ -1,4 +1,4 @@
-const { where } = require("sequelize");
+
 const { sequelize, User } = require("../models")
 
 class UserController {

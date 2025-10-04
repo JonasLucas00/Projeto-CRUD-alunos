@@ -32,18 +32,21 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
     - [x] delete (com rota e controller)
 
 2. [x] Autenticação do usuario (JWT), validar login do user e gerar Token
-3. [] Middleware de verificação do JWT
 
-- Instalar tokens via npm OK
+- Instalar JWT via npm OK
 - Definir value do token e tempo de expiração (dotenv) OK
 - Criar controller para gerenciar token
 - Criar arquivo da rota e criar a rota da validação `token`
 - user acessar rota do token (login), validamos email e senha
 - Se for valido, gerar token e enviar para o user
 
+3. [x] Middleware de verificação do token JWT (authMiddlweare.js)
+4. [x] Criar rotas da parte de alunos e model Aluno
+    - [x] Criar model e migration alunos
+    - [x] Definir rotas alunos
+5. [] CRUD alunos
+    - [] implementar validação JWT
 
-- No JWT não é usado sessão, é gerado um chave onde uma fica com o cliente e outra com o servidor? e a chave do cliente é armazenada no navegador?
-    
 ### Pós config inicial
 
 Dependencias:
@@ -75,10 +78,22 @@ Dependencias:
 
 - Se usar database.js em vez de config.json, crie um `.sequelizerc` apontando para ele.
 
-## CONTINUAR
+# DUVIDAS
 
-- Estou enviando dados via JSON e recebendo o User.create(req.body). Meu model de Users possui as chaves
+1. Estou enviando dados via JSON e recebendo o User.create(req.body). Meu model de Users possui as chaves
 name, email e password. Quais tipos de dados eu posso enviar no User.create para efetuar a criaçào? pode ser
 qualquer tipo de dados (como objeto, json, array etc) contando que tenha o mesmo nome das chaves do model?
 
-Arquivo alunos nome, sobremome, email, idade, peso, altura
+2. O usuario fez login, com isso foi validado seu token, ele consegue acessar rotas protegidas.
+Se ele alterar o email com o controller upddate, o token dele ainda vai ser valido para acessar as rotas protegidas?
+O correto seria, após salvar esse novo email no BD, forçar um novo login com o email correto?
+Pois por exemplo, e se o token for valido por 7 dias? a pessoa já trocou o email mas o token ficaria valido por
+7 dias ainda?
+- R: Uma abordagem mais comum é deixar apenas do ID no payload do token, pois o ID não muda.
+
+# COMMIT
+
+feat: Cria model alunos
+
+<DEATALHES>
+Implementado model alunos para posteriormente implementar um CRUD
