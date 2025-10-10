@@ -23,6 +23,7 @@ async function authMiddleware(req, res, next) {
             return res.json('Erro no match email')
         }
 
+        //Essas variaveis ficam disponiveis nos controlles da rota onde esse middleware é usado
         req.userId = id;
         req.userEmail = email;
         console.log(`${authHeader}\n`)

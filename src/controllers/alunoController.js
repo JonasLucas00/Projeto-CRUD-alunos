@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const { Alunos } = require('../models')
 
 class AlunoController {
@@ -8,7 +9,7 @@ class AlunoController {
     async store(req, res) {
         try {
             const aluno = await Alunos.create(req.body);
-            res.json(aluno)
+            res.json(aluno);
 
         } catch (error) {
             console.log(`${error}`)
@@ -32,12 +33,46 @@ class AlunoController {
 
     async index(req, res) {
         try {
-            const alunos = await Alunos.find()
+            const alunos = await Alunos.findAll()
             console.log('Index executado')
-            res.json(alunos)
+            return res.json(alunos)
         } catch (error) {
             console.log(`erro index: ${error}`)
-            res.json('ERRO')
+            return res.json('ERRO')
+        }
+    }
+
+    async show(req, res) {
+        console.log(req.userId)
+        try {
+            const aluno = await Alunos.findOne({ where: { id: req.userId } })
+            if (!aluno) {
+                throw new Error('Aluno Não localizado')
+            }
+            console.log(`show realizado`);
+            return res.json(aluno)
+        } catch (error) {
+            console.log(`erro show: ${error}`)
+            return res.json({ error: error.message })
+        }
+    }
+
+    async update(req, res) {
+
+        if (!req.userId) {
+            return res.json('Sem parametro')
+        }
+        try {
+            const aluno = await Alunos.findOne({ where: req.userId })
+            if (!aluno) {
+                throw new Error(`dado não localizado`)
+            }
+            const alunoUpdate = await aluno.update(req.body);
+            console.log(`update feito`);
+            res.json(alunoUpdate)
+        } catch (error) {
+            console.log(error)
+            res.json({ error: error.message })
         }
     }
 }

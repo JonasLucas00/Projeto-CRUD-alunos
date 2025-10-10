@@ -44,8 +44,8 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
 4. [x] Criar rotas da parte de alunos e model Aluno
     - [x] Criar model e migration alunos
     - [x] Definir rotas alunos
-5. [] CRUD alunos
-    - [] implementar validação JWT
+5. [x] CRUD alunos
+    - [x] implementar validação JWT
 
 ### Pós config inicial
 
@@ -89,11 +89,18 @@ Se ele alterar o email com o controller upddate, o token dele ainda vai ser vali
 O correto seria, após salvar esse novo email no BD, forçar um novo login com o email correto?
 Pois por exemplo, e se o token for valido por 7 dias? a pessoa já trocou o email mas o token ficaria valido por
 7 dias ainda?
-- R: Uma abordagem mais comum é deixar apenas do ID no payload do token, pois o ID não muda.
+- R: Uma abordagem mais comum é deixar apenas do ID no payload do token, pois o ID não muda. Ou usar o middleware em todas as rotas para sempre validar os dados que podem ser alterados pelo user
 
 # COMMIT
 
-feat: Cria model alunos
+feat: Implementa CRUD alunos + JWT validation
 
 <DEATALHES>
-Implementado model alunos para posteriormente implementar um CRUD
+Adiciona controllers e rotas do model Alunos para implementaçào de CRUD,
+onde os anulos poderão alterar, localizar e excluir seus proprios dados.
+
+
+# Fluxo
+
+- Geramos um token na rota 'localhost/token' e com isso validamos esse token em todas as rotas
+- Se o token é valido, o user consegue acessar as rotas para utilizar o CRUD
