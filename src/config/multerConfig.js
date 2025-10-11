@@ -2,6 +2,13 @@ const multer = require('multer');
 const path = require('path')
 
 // Configuração de onde e como os arquivos serão salvos
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype != 'image/png' && file.mimetype != 'image/jpeg') {
+        return cb(new multer.MulterError('Formato de arquivo invalido'));
+    }
+    return cb(null, true)
+}
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '../../uploads')); // pasta onde vai salvar
@@ -9,5 +16,9 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname)); // renomeia o arquivo
     }
-});
-module.exports = { storage }; //exportar o objeto storage
+})
+
+module.exports = {
+    fileFilter,
+    storage
+}
