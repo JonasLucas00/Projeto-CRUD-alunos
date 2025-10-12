@@ -1,14 +1,14 @@
 const multer = require('multer');
 const path = require('path')
 
-// Configuração de onde e como os arquivos serão salvos
-
+//configuração para permitir que seja salvo apenas formato png e jpeg. (opcional)
 const fileFilter = (req, file, cb) => {
     if (file.mimetype != 'image/png' && file.mimetype != 'image/jpeg') {
         return cb(new multer.MulterError('Formato de arquivo invalido'));
     }
     return cb(null, true)
 }
+// Configuração de onde e como os arquivos serão salvos
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '../../uploads')); // pasta onde vai salvar

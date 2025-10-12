@@ -1,29 +1,5 @@
 # to do
 
-## 1. Inicio servidor express + nodemon (rodando em container docker com hotReload nodemon)
-
-instalação de dependencias, criação e configuração basica dos arquivos abaixo.
-Mostrando mensagem 'success' ao iniciar o servidor express.
-
-1. Iniciei projeto com criação do package.json e instalação das dependencias:
-    - dotenv
-    - sequelize
-    - sqlite3
-    - nodemon
-    - sequelize-cli
-    - express
-
-2. Criação dos arquivos:
-    - server.js
-    - dockerfile
-    - docker-compose.yml
-    - .giignore
-    - .dockerignore
-    - nodemon.json
-    - .env
-
-## feats
-
 1. [x] Criação do CRUD completo index, show, update e delete (teste com insomnia)
 
     - [x] index (com rota e controller)
@@ -44,39 +20,18 @@ Mostrando mensagem 'success' ao iniciar o servidor express.
 4. [x] Criar rotas da parte de alunos e model Aluno
     - [x] Criar model e migration alunos
     - [x] Definir rotas alunos
+
 5. [x] CRUD alunos
-    - [x] implementar validação JWT
+    - [x] implementar validação JWT nas rotas dos alunos
 
-### Pós config inicial
+6. [x] permitir upload de arquivos (como fotos)
+    - [x] Proteger rota de upload de arquivos
 
-Dependencias:
-
-- bcrypt
-
-# Configuração sequelize
-
-1. Iniciar sequelize `npx sequelize-cli init` cria pastas:
-    - /config/config.json (alterado para databse.js)
-    - /migrations
-    - /models/index.js
-    - /seeders
-
-2. configurar arquivos database.js para uso do sqlite3
-
-3. Criar arquivo `.sequelizerc` para apontar para database.js e configurar demais rotas
-
-4. rodar comando para criar o model `npx sequelize-cli model:generate --name User --attributes name:string,email:string`
-    - cria arquivo /models/Users.js (model)
-    - migrations/YYYYMMDDHHMMSS-create-user.js (arquivo migration)
+7. [] Salvar foto na base de dados
+    - [] criar model e migration para salvar as fotos. A tabela de fotos deve conter o id do aluno.
 
 
-## Uso do sequelize
 
-1. Gerar arquivo `database.sqlite` (rodar migrations) `npx sequelize-cli db:migrate`
-
-## OBS
-
-- Se usar database.js em vez de config.json, crie um `.sequelizerc` apontando para ele.
 
 # DUVIDAS
 
@@ -90,15 +45,6 @@ O correto seria, após salvar esse novo email no BD, forçar um novo login com o
 Pois por exemplo, e se o token for valido por 7 dias? a pessoa já trocou o email mas o token ficaria valido por
 7 dias ainda?
 - R: Uma abordagem mais comum é deixar apenas do ID no payload do token, pois o ID não muda. Ou usar o middleware em todas as rotas para sempre validar os dados que podem ser alterados pelo user
-
-# COMMIT
-
-feat: Implementa CRUD alunos + JWT validation
-
-<DEATALHES>
-Adiciona controllers e rotas do model Alunos para implementaçào de CRUD,
-onde os anulos poderão alterar, localizar e excluir seus proprios dados.
-
 
 # Fluxo
 
