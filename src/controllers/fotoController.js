@@ -6,6 +6,7 @@ const { Fotos } = require('../models');
 class FotoController {
     //Enviar a foto para a pasta uploads
     store(req, res) {
+        // middleware do multer que permite uso do req.file
         return upload(req, res, async (err) => {
             if (err) {
                 console.log(`Erro no testFoto ${err}`)
@@ -23,7 +24,7 @@ class FotoController {
 
             } catch (error) {
                 console.log(error)
-                return res.json('Erro no store')
+                return res.json('Erro no store ou aluno não existe')
             }
         })
 
@@ -31,6 +32,16 @@ class FotoController {
 
     async index(req, res) {
 
+        console.log(req.body)
+        try {
+            //busca todas as fotos de um aluno (id)
+            const metaFotos = await Fotos.findAll({ where: { aluno_id: req.body.id } })
+            console.log(metaFotos)
+            return res.json(metaFotos)
+        } catch (error) {
+            console.log(error)
+            return res.json('Erro index')
+        }
     }
 }
 

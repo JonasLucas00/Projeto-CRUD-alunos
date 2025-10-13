@@ -1,5 +1,6 @@
-const { where } = require('sequelize');
+const { where, Model } = require('sequelize');
 const { Alunos } = require('../models')
+const { Fotos } = require('../models');
 
 class AlunoController {
     constructor() {
@@ -33,7 +34,16 @@ class AlunoController {
 
     async index(req, res) {
         try {
-            const alunos = await Alunos.findAll()
+            const alunos = await Alunos.findAll({
+                attributes: ['id', 'name', 'sobrenome', 'email', 'altura', 'peso', 'altura'],
+                include: [
+                    {
+                        model: Fotos,
+                        as: 'fotos',
+                        attributes: ['file_name', 'original_name', 'aluno_id']
+                    }]
+
+            })
             console.log('Index executado')
             return res.json(alunos)
         } catch (error) {

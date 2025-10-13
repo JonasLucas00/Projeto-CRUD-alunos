@@ -27,9 +27,10 @@
 6. [x] permitir upload de arquivos (como fotos)
     - [x] Proteger rota de upload de arquivos
 
-7. [] Salvar foto na base de dados
-    - [] criar model e migration para salvar as fotos. A tabela de fotos deve conter o id do aluno.
+7. [x] Salvar foto na base de dados
+    - [x] criar model e migration para salvar as fotos. A tabela de fotos deve conter o id do aluno.
 
+8. [x] Listar os alunos com suas fotos
 
 
 
@@ -45,6 +46,16 @@ O correto seria, após salvar esse novo email no BD, forçar um novo login com o
 Pois por exemplo, e se o token for valido por 7 dias? a pessoa já trocou o email mas o token ficaria valido por
 7 dias ainda?
 - R: Uma abordagem mais comum é deixar apenas do ID no payload do token, pois o ID não muda. Ou usar o middleware em todas as rotas para sempre validar os dados que podem ser alterados pelo user
+
+3. Por exemplo, no meu model de fotos e na migration, eu tenho esse campos abaixo, mas se eu for enviar um arquivo .png ou jpeg, o valor de fileName e original name devem ser informados no body da requisião manualmente? 
+
+`Fotos.init({ name: DataTypes.STRING, 
+originalName: DataTypes.STRING, 
+fileName: DataTypes.STRING, 
+alunoID: DataTypes.INTEGER }),`
+
+- R: Não Você não precisa enviar fileName nem originalName no body da requisição manualmente. Esses valores são extraídos automaticamente pelo Multer quando o upload é feito, e você mesmo os salva no banco (usando o model Fotos) com base no req.file
+
 
 # Fluxo
 
