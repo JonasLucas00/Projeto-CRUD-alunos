@@ -1,7 +1,8 @@
 {
     "watch": [
         "src",
-        "server.js"
+        "server.js",
+        "index.js"
     ],
     "ext": "js,json",
     "ignore": [
@@ -10,5 +11,5 @@
         "dist/",
         "coverage/"
     ],
-    "exec": "node server.js"
+    "exec": "node api/index.js"
 }
