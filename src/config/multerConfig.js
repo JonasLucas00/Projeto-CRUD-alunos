@@ -11,7 +11,7 @@ const fileFilter = (req, file, cb) => {
 // Configuração de onde e como os arquivos serão salvos
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../../uploads')); // pasta onde vai salvar
+        cb(null, path.join(__dirname, '../../uploads/images')); // pasta onde vai salvar
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname)); // renomeia o arquivo

@@ -40,7 +40,7 @@ class AlunoController {
                     {
                         model: Fotos,
                         as: 'fotos',
-                        attributes: ['file_name', 'original_name', 'aluno_id']
+                        attributes: ['file_name', 'original_name', 'aluno_id', 'url']
                     }]
 
             })

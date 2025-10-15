@@ -12,6 +12,9 @@ const sqliteConnect = require('./src/config/sqliteConnect.js')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, 'uploads', 'images')));
+console.log(path.join((__dirname, 'uploads', 'images')))
+
 
 app.use('/', homeRouter);
 app.use('/user', userRouter);

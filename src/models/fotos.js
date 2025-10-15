@@ -12,7 +12,13 @@ module.exports = (sequelize, DataTypes) => {
   Fotos.init({
     original_name: DataTypes.STRING,
     file_name: DataTypes.STRING,
-    aluno_id: DataTypes.INTEGER
+    aluno_id: DataTypes.INTEGER,
+    url: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return `http://localhost:3000/images/${this.getDataValue('file_name')}`
+      }
+    }
   }, {
     sequelize,
     modelName: 'Fotos',
