@@ -73,5 +73,5 @@ Enviar no body da requisição os dados para o CRUD
 
 Lucas Jonas da Silva
 
-📬  [Linkedin](www.linkedin.com/in/lucas-jonas-83209b1a3)
+📬 [Linkedin](https://www.linkedin.com/in/lucas-jonas-83209b1a3)
 📦 [GitHub](https://github.com/JonasLucas00)
