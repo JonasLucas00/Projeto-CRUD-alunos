@@ -20,10 +20,7 @@ class AlunoController {
 
     async destroy(req, res) {
         try {
-            // const match = await Alunos.findOne({ where: { email: req.body.email } })
-            // if (!match) {
-            //     return res.json('nao localziado');
-            // }
+
             await Alunos.destroy({ where: {}, truncate: true });
             return res.json('feito')
         } catch (error) {
@@ -88,11 +85,3 @@ class AlunoController {
 }
 
 module.exports = new AlunoController()
-
-/*
-CRUD
-store - criar
-Show - buscar um especifico
-deleteOne
-update - Atualizar algum dado
-*/

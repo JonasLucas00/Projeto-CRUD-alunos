@@ -1,5 +1,4 @@
 node_modules
 .env
 database.sqlite
-teste.js
-server.js
+planejamento.md

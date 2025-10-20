@@ -6,7 +6,7 @@ const path = require('path')
 const userRouter = require('./src/routes/userRoute.js')
 const homeRouter = require('./src/routes/homeRouter.js')
 const alunosRouter = require('./src/routes/alunosRouter.js')
-const jwtRouter = require('./src/routes/jwtRouter.js');
+const loginRouter = require('./src/routes/loginRouter.js');
 const fotoRouter = require('./src/routes/fotoRouter.js')
 const sqliteConnect = require('./src/config/sqliteConnect.js')
 
@@ -18,7 +18,7 @@ console.log(path.join((__dirname, 'uploads', 'images')))
 
 app.use('/', homeRouter);
 app.use('/user', userRouter);
-app.use('/token', jwtRouter);
+app.use('/login', loginRouter);
 app.use('/alunos', alunosRouter);
 app.use('/uploads', fotoRouter);
 sqliteConnect.testeDB()

@@ -32,7 +32,11 @@
 
 8. [x] Listar os alunos com suas fotos
 
+9. [x] Configurar arquivos estaticos
+    - [x] Criar arquivo imagens dentro de uploads para salvar as fotos
+    - [x] adicionar a url no model fotos e no model alunos
 
+10. [] Deploy da aplicação na AWS EC2
 
 # DUVIDAS
 
@@ -57,7 +61,10 @@ alunoID: DataTypes.INTEGER }),`
 - R: Não Você não precisa enviar fileName nem originalName no body da requisição manualmente. Esses valores são extraídos automaticamente pelo Multer quando o upload é feito, e você mesmo os salva no banco (usando o model Fotos) com base no req.file
 
 
+build é do sucrase, ele é um compilador? 
+
 # Fluxo
 
 - Geramos um token na rota 'localhost/token' e com isso validamos esse token em todas as rotas
 - Se o token é valido, o user consegue acessar as rotas para utilizar o CRUD
+
