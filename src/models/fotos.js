@@ -6,7 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class Fotos extends Model {
 
     static associate(models) {
-      this.belongsTo(models.Alunos, { foreignKey: 'aluno_id', as: 'aluno' });
+      this.belongsTo(models.Alunos, {
+        foreignKey: 'aluno_id',
+        as: 'aluno',
+        onDelete: 'CASCADE'
+      });
     }
   }
   Fotos.init({

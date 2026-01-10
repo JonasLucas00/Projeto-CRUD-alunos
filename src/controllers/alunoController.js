@@ -29,9 +29,12 @@ class AlunoController {
         }
     }
 
+    // Each aluno has a image from the images model
+    // In order to delete element aluno, i have to delete  
+
     async destroy(req, res) {
         let { email } = req.body
-        console.log(`teste delede email: ${email}`)
+        console.log(`teste delete email`)
 
 
         if (!email) {
