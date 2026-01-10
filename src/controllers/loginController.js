@@ -16,7 +16,7 @@ class JwtController {
                 return res.json(`Usuario não localizado`);
             }
             console.log('User localizado');
-            //Validacao da assinatura do JWT token
+            // Utiliza função passValidate para validar senha comparando o hash da senha
             const match = await user.passValidate(req.body.password);
 
             if (!match) {

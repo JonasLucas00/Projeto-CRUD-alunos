@@ -18,7 +18,7 @@ class AlunoController {
         }
     }
 
-    async destroy(req, res) {
+    async destroyAll(req, res) {
         try {
 
             await Alunos.destroy({ where: {}, truncate: true });
@@ -29,7 +29,32 @@ class AlunoController {
         }
     }
 
+    async destroy(req, res) {
+        let { email } = req.body
+        console.log(`teste delede email: ${email}`)
+
+
+        if (!email) {
+            return res.json('Informe um paremetro para exclusão');
+        }
+        try {
+            let aluno = await Alunos.findOne({ where: { email: email } })
+
+
+            if (!aluno) {
+                return res.json('Aluno não localizado para exclusão');
+            }
+            await aluno.destroy()
+            return res.json(`Aluno identificado pelo email ${email} foi apagado do sistema`)
+        } catch (error) {
+            console.log(error)
+            return res.json('ERRO delete')
+        }
+    }
+
+
     async index(req, res) {
+        console.log('teste index')
         try {
             const alunos = await Alunos.findAll({
                 attributes: ['id', 'name', 'sobrenome', 'email', 'altura', 'peso', 'altura'],
@@ -50,9 +75,11 @@ class AlunoController {
     }
 
     async show(req, res) {
-        console.log(req.userId)
+        console.log(req.body.id)
+        console.log(req.body.email)
+        console.log('teste show')
         try {
-            const aluno = await Alunos.findOne({ where: { id: req.userId } })
+            const aluno = await Alunos.findOne({ where: { email: req.body.email } })
             if (!aluno) {
                 throw new Error('Aluno Não localizado')
             }

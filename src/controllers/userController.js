@@ -24,9 +24,6 @@ class UserController {
         }
     }
 
-    teste(req, res) {
-        return res.send('teste sucesso')
-    }
 
     //remoção de TODOS os dados do BD
     async deleteAll(req, res) {
