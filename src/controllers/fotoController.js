@@ -36,7 +36,8 @@ class FotoController {
         try {
             //busca todas as fotos de um aluno (id)
             const metaFotos = await Fotos.findAll({ where: { aluno_id: req.body.id } })
-            console.log(metaFotos)
+            if (!metaFotos || metaFotos.length <= 0) return res.json('Aluno nao possui fotos ou nao existe')
+            console.log(`Dados fotos: ${metaFotos}`)
             return res.json(metaFotos)
         } catch (error) {
             console.log(error)
