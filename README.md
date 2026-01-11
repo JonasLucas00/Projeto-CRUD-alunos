@@ -231,5 +231,5 @@ Estrutura organizada em controllers, models e routes
 
 Lucas Jonas da Silva
 
-📬 [Linkedin](https://www.linkedin.com/in/lucas-jonas-83209b1a3)
+📬 [Linkedin](www.linkedin.com/in/lucas-jonas00)
 📦 [GitHub](https://github.com/JonasLucas00)
